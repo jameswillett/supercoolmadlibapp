@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Mad lib:</strong>
+  <%= @solution.mad_lib %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @solution.text %>
+</p>
+
+<%= link_to 'Edit', edit_solution_path(@solution) %> |
+<%= link_to 'Back', solutions_path %>
