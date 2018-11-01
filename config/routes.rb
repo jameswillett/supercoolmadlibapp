@@ -1,4 +1,5 @@
 Madlibs::Application.routes.draw do
+  resources :reports
   resources :mad_libs do
     resources :solutions
   end

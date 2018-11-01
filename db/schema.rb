@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181031043845) do
+ActiveRecord::Schema.define(version: 20181101045942) do
 
   create_table "mad_libs", force: :cascade do |t|
     t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reports", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -23,6 +28,7 @@ ActiveRecord::Schema.define(version: 20181031043845) do
     t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "words"
     t.index ["mad_lib_id"], name: "index_solutions_on_mad_lib_id"
   end
 

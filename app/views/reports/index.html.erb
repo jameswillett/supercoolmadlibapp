@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Reports</h1>
+<table>
+  <tr>
+    <th>Types of Words</th>
+    <th>Words Used</th>
+  </tr>
+  <tr>
+    <td>
+      <ul>
+        <% @typecounts.each do |k, v| %>
+          <li><%= k %>: <%= v %></li>
+        <% end %>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <% @wordcounts.each do |k, v| %>
+          <li><%= k %>: <%= v %></li>
+        <% end %>
+      </ul>
+    </td>
+  </tr>
+<br>

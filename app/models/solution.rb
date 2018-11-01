@@ -22,16 +22,16 @@ class Solution < ApplicationRecord
     @hash.each do |k, v|
       madlib_hash[k] = v
     end
-   
+
     #maybe a little janky but the Solution's hash is out of order
     #(because of the order it was populated) but the MadLib's hash
     #is in order, so we can just iterate over it and expect it to
     #be in the same order as the template words in the original text
 
-    madlib_hash.each do |k, v|
+    madlib_hash.each do |_, v|
       madlib_text.sub!(/{[^}]+}/, v)
     end
-    
+
     return madlib_text
   end
 end

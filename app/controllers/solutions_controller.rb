@@ -21,10 +21,13 @@ class SolutionsController < ApplicationController
 
   # POST /solutions
   def create
+    words = []
     @solution = Solution.new({ :mad_lib_id => params[:mad_lib_id]})
     params[:solution].each do |k, v|
       @solution.fill_field(k, :with => v)
+      words.push(v)
     end
+    @solution.words = words.join('%')
     @solution.text = @solution.resolve
     if @solution.save
       redirect_to @solution, notice: 'Your solution has been created'
