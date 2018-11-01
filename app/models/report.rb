@@ -27,7 +27,7 @@ class Report < ApplicationRecord
         wordcounts[word] += 1
       end
     end
-    return wordcounts
+    return wordcounts.sort_by {|_, v| v}.reverse.to_h
   end
 
   def gettypecounts
@@ -55,6 +55,6 @@ class Report < ApplicationRecord
         matchtype(type, word)
       end
     end
-    return @typecounts
+    return @typecounts.sort_by {|_, v| v}.reverse.to_h
   end
 end
