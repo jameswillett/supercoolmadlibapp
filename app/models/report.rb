@@ -36,12 +36,12 @@ class Report < ApplicationRecord
       :Verbs => 0,
       :Adjectives => 0,
       :Jobs => 0,
-      :Adverb => 0,
-      :Pronoun => 0,
-      :Preposition => 0,
-      :Conjunction => 0,
-      :Determiner => 0,
-      :Exclamation => 0
+      :Adverbs => 0,
+      :Pronouns => 0,
+      :Prepositions => 0,
+      :Conjunctions => 0,
+      :Determiners => 0,
+      :Exclamations => 0
     }
 
     def matchtype(type, word)
