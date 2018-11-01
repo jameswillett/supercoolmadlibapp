@@ -14,7 +14,7 @@
   <tbody>
     <% @solutions.each do |solution| %>
       <tr>
-        <td><%= solution.mad_lib %></td>
+        <td><%= solution.mad_lib_id %></td>
         <td><%= solution.text %></td>
         <td><%= link_to 'Show', solution %></td>
         <td><%= link_to 'Edit', edit_solution_path(solution) %></td>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Solution', new_solution_path %>
+<%= link_to 'New Solution', new_mad_lib_solution_path %>

@@ -2,7 +2,7 @@
 
 <p>
   <strong>Mad lib:</strong>
-  <%= @solution.mad_lib %>
+  <%= MadLib.find(@solution.mad_lib_id).text %>
 </p>
 
 <p>

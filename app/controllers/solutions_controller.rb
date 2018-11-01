@@ -21,15 +21,18 @@ class SolutionsController < ApplicationController
 
   # POST /solutions
   def create
-    @solution = Solution.new(solution_params)
-
+    @solution = Solution.new({ :mad_lib_id => params[:mad_lib_id]})
+    params[:solution].each do |k, v|
+      @solution.fill_field(k, :with => v)
+    end
+    @solution.text = @solution.resolve
     if @solution.save
       redirect_to @solution, notice: 'Solution was successfully created.'
     else
       render :new
     end
   end
-  
+
   # PATCH/PUT /solutions/1
   def update
     if @solution.update(solution_params)

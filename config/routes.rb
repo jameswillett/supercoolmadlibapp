@@ -2,6 +2,7 @@ Madlibs::Application.routes.draw do
   resources :mad_libs do
     resources :solutions
   end
+  resources :solutions, :path => 'solutions'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
