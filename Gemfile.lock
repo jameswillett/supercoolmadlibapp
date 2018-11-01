@@ -116,6 +116,7 @@ GEM
     nio4r (2.2.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
+    pg (0.21.0)
     power_assert (1.1.1)
     public_suffix (3.0.2)
     rack (2.0.4)
@@ -212,6 +213,7 @@ DEPENDENCIES
   guard-cucumber
   haml
   jquery-rails
+  pg (~> 0.18)
   rails (= 5.1.4)
   rspec-rails
   sass-rails
@@ -220,4 +222,4 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
 
 BUNDLED WITH
-   1.16.0
+   1.16.2

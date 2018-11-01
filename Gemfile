@@ -5,7 +5,7 @@ gem 'rails', '5.1.4'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+#gem 'pg', '~> 0.18'
 gem 'haml'
 
 # Gems used only for assets and not required
@@ -35,6 +35,13 @@ gem 'jquery-rails'
 
 # To use debugger
 #gem 'debugger'
+group :production, :development do
+  gem 'pg', '~> 0.18'
+end
+
+group :development, :test do
+  gem 'sqlite3'
+end
 
 group :development do
   gem 'annotate'
