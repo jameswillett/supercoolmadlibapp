@@ -1,7 +1,7 @@
 <%= form_with(model: solution, local: true) do |form| %>
   <% fields.each do |k| %>
     <div class="field">
-      <%= form.label k %>
+      <span><%= k %><span>
       <%= form.text_field k, id: k %>
     </div>
   <% end %>
