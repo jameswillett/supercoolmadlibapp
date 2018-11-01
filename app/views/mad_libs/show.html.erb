@@ -5,5 +5,7 @@
   <%= @mad_lib.text %>
 </p>
 
+<%= render 'solution', mad_lib: @mad_lib, solution: @solution, fields: @fields %>
+
 <%= link_to 'Edit', edit_mad_lib_path(@mad_lib) %> |
 <%= link_to 'Back', mad_libs_path %>

@@ -1,0 +1,11 @@
+<%= form_with(model: solution, local: true) do |form| %>
+  <% fields.each do |k| %>
+    <div class="field">
+      <%= form.label k %>
+      <%= form.text_field k, id: k %>
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= form.button "Fill In", name: "mad_lib_id", value: solution.mad_lib_id %>
+  </div>
+<% end %>

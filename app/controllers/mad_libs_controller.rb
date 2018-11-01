@@ -8,6 +8,13 @@ class MadLibsController < ApplicationController
 
   # GET /mad_libs/1
   def show
+    fields = []
+    @mad_lib = MadLib.find(params[:id])
+    @mad_lib.buildhash.each do |k, v|
+      fields.push(k)
+    end
+    @fields = fields
+    @solution = Solution.new({ :mad_lib_id => params[:id] })
   end
 
   # GET /mad_libs/new
@@ -24,7 +31,7 @@ class MadLibsController < ApplicationController
     @mad_lib = MadLib.new(mad_lib_params)
 
     if @mad_lib.save
-      redirect_to @mad_lib, notice: 'Mad lib was successfully created.'
+      redirect_to @mad_lib, notice: 'New Mad Lib created'
     else
       render :new
     end
@@ -53,6 +60,6 @@ class MadLibsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def mad_lib_params
-      params.require(:mad_lib).permit(:text)
+      params.permit(:text)
     end
 end

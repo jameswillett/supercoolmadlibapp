@@ -27,7 +27,7 @@ class SolutionsController < ApplicationController
     end
     @solution.text = @solution.resolve
     if @solution.save
-      redirect_to @solution, notice: 'Solution was successfully created.'
+      redirect_to @solution, notice: 'Your solution has been created'
     else
       render :new
     end

@@ -1,15 +1,4 @@
 <%= form_with(model: mad_lib, local: true) do |form| %>
-  <% if mad_lib.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(mad_lib.errors.count, "error") %> prohibited this mad_lib from being saved:</h2>
-
-      <ul>
-      <% mad_lib.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
     <%= form.label :text %>
@@ -17,6 +6,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.button :Create %>
   </div>
 <% end %>
