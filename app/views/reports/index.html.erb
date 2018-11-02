@@ -10,7 +10,9 @@
     <td>
       <ul>
         <% @typecounts.each do |k, v| %>
-          <li><%= k %>: <%= v %></li>
+          <% if v == 0 %>
+            <li><%= k %>: <%= v %></li>
+          <% end %>
         <% end %>
       </ul>
     </td>
