@@ -2,7 +2,7 @@
   <p>Enter your madlib template below!</p>
   <p>It should be in the form of "I love {adjective} {animal, plural}"</p>
   <div class="field">
-    <%= form.text_area :text, id: :mad_lib_text %>
+    <%= form.text_area :text, id: :mad_lib_text, :required => true %>
   </div>
 
   <div class="actions">

@@ -2,7 +2,7 @@
   <% fields.each do |k| %>
     <div class="field">
       <span><%= k %><span>
-      <%= form.text_field k, id: k %>
+      <%= form.text_field k, id: k, :required => true %>
     </div>
   <% end %>
   <div class="actions">
