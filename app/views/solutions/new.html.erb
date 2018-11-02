@@ -1,5 +1,6 @@
 <h1>New Solution</h1>
 
-<%= render 'form', solution: @solution, mad_lib_id: :mad_lib_id %>
+<p><%= @mad_lib.text %></p>
+<%= render 'form', solution: @solution, mad_lib: @mad_lib %>
 
-<%= link_to 'Back', solutions_path %>
+<%= link_to 'Back', mad_lib_solutions_path(@mad_lib) %>

@@ -1,29 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Solutions</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Mad lib</th>
-      <th>Text</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @solutions.each do |solution| %>
+<h1>Solutions for MadLib #<%= @mad_lib_id %></h1>
+<h2><%= @mad_lib_text %></h2>
+<% unless @solutions.length == 0 %>
+  <table align="center">
+    <thead>
       <tr>
-        <td><%= solution.mad_lib_id %></td>
-        <td><%= solution.text %></td>
-        <td><%= link_to 'Show', solution %></td>
-        <td><%= link_to 'Edit', edit_solution_path(solution) %></td>
-        <td><%= link_to 'Destroy', solution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Id</th>
+        <th>Text</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @solutions.each do |solution| %>
+        <tr>
+          <td><%= solution.id %>
+          <td><%= solution.text %></td>
+          <td><%= link_to 'Destroy', solution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h3>No solutions for madlib #<%= @mad_lib_id %>... yet</h3>
+<% end %>
 
 <br>
 
 <%= link_to 'New Solution', new_mad_lib_solution_path %>
+<%= link_to 'Go Home', '/' %>
+<%= link_to 'Reporting Page', reports_url %>

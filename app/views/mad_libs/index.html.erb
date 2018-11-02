@@ -3,3 +3,27 @@
 <h1>Mad Libs</h1>
 
 <%= render 'form', mad_lib: @mad_lib %>
+
+<% unless @mad_libs.length == 0 %>
+  <table align="center">
+    <tr>
+      <th>ID</th>
+      <th>Text</th>
+      <th>Actions</th>
+    </tr>
+    <% @mad_libs.each do |mad_lib| %>
+      <tr>
+        <td><%= mad_lib.id %></td>
+        <td><%= mad_lib.text %></td>
+        <td>
+          <%= link_to "See Solutions", mad_lib_solutions_path(mad_lib) %>
+          <%= link_to 'Destroy', mad_lib, method: :delete, data: { confirm: 'Are you sure? This will also delete any associated solutions as well' } %>
+        </td>
+
+      </tr>
+    <% end %>
+  </table>
+  <%= link_to 'Reporting Page', reports_url %>
+<% else %>
+  <h3>No past madlibs to show!</h3>
+<% end %>

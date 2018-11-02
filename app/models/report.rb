@@ -1,17 +1,16 @@
 class Report < ApplicationRecord
   def getwordtypes
     types = []
-    mad_libs = MadLib.all
-    mad_libs.each do |ml|
-      types.concat(ml.parse)
+    MadLib.all.each do |ml|
+      solutions_count = Solution.where(mad_lib_id: ml.id).size
+      types.push({:num => solutions_count, :words => ml.parse})
     end
     return types
   end
 
   def getwords
     words = []
-    solutions = Solution.all
-    solutions.each do |s|
+    Solution.all.each do |s|
       words.concat(s.words.split("%"))
     end
     return words
@@ -27,7 +26,7 @@ class Report < ApplicationRecord
         wordcounts[word] += 1
       end
     end
-    return wordcounts.sort_by {|_, v| v}.reverse.to_h
+    return wordcounts.sort_by {|_, v| -v}.to_h
   end
 
   def gettypecounts
@@ -36,6 +35,7 @@ class Report < ApplicationRecord
       :Verbs => 0,
       :Adjectives => 0,
       :Jobs => 0,
+      :Animals => 0,
       :Adverbs => 0,
       :Pronouns => 0,
       :Prepositions => 0,
@@ -44,17 +44,21 @@ class Report < ApplicationRecord
       :Exclamations => 0
     }
 
-    def matchtype(type, word)
-      if word.downcase.match(type.to_s.downcase.chop) != nil
-        @typecounts[type] += 1
+    def matchtype(type, words, num)
+      words.each do |word|
+        if word.downcase.match(type.to_s.downcase.chop) != nil
+          @typecounts[type] += num
+        end
       end
     end
 
-    self.getwordtypes.each do |word|
+    self.getwordtypes.each do |hash|
+      num = hash[:num]
+      words = hash[:words]
       @typecounts.each do |type, _|
-        matchtype(type, word)
+        matchtype(type, words, num)
       end
     end
-    return @typecounts.sort_by {|_, v| v}.reverse.to_h
+    return @typecounts.sort_by {|_, v| -v}.to_h
   end
 end

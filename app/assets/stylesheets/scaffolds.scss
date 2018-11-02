@@ -83,3 +83,10 @@ div {
 label {
   display: block;
 }
+
+textarea {
+  margin: 0;
+  width: 420px;
+  height: 200px;
+  resize: none;
+}

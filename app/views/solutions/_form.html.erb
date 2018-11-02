@@ -11,10 +11,10 @@
     </div>
   <% end %>
 
-  <% MadLib.find(params[:mad_lib_id]).buildhash.each do |k, v| %>
+  <% @mad_lib.buildhash.each do |k, v| %>
     <div class="field">
-      <%=  k %>
-      <%= form.text_field k %>
+      <%= k %>
+      <%= form.text_field k, :required => true %>
     </div>
   <% end %>
   <div class="actions">

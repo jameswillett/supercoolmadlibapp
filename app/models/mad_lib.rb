@@ -1,5 +1,5 @@
 class MadLib < ApplicationRecord
-  has_many :solutions
+  has_many :solutions, dependent: :destroy
   def parse
     #this can probably be done with a really good regexp
     #gives us an array of templated words in the order they appear
@@ -37,7 +37,7 @@ class MadLib < ApplicationRecord
     #parses out the templated words and builds the
     #hash with pretty keys
     @hash = Hash.new
-    self.parse.each do |f| 
+    self.parse.each do |f|
       self.addfieldtohash(f)
     end
     return @hash

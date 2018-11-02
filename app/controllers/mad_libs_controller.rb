@@ -29,8 +29,9 @@ class MadLibsController < ApplicationController
   # POST /mad_libs
   def create
     @mad_lib = MadLib.new(mad_lib_params)
-
-    if @mad_lib.save
+    if @mad_lib.text == nil || @mad_lib.parse.length == 0
+      redirect_to '/', notice: "You didn't follow the instructions!"
+    elsif @mad_lib.save
       redirect_to @mad_lib, notice: 'New Mad Lib created'
     else
       render :new

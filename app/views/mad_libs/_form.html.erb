@@ -1,6 +1,6 @@
 <%= form_with(model: mad_lib, local: true) do |form| %>
-  <p>Enter you madlib template below!</p>
-  <p>It should be in the form of "I love {adjective} {animal, plaural}"</p>
+  <p>Enter your madlib template below!</p>
+  <p>It should be in the form of "I love {adjective} {animal, plural}"</p>
   <div class="field">
     <%= form.text_area :text, id: :mad_lib_text %>
   </div>

@@ -3,7 +3,10 @@ class SolutionsController < ApplicationController
 
   # GET /solutions
   def index
-    @solutions = Solution.all
+    puts params[:mad_lib_id]
+    @solutions = Solution.where(mad_lib_id: params[:mad_lib_id]).all
+    @mad_lib_text = MadLib.find(params[:mad_lib_id]).text
+    @mad_lib_id = params[:mad_lib_id]
   end
 
   # GET /solutions/1
@@ -13,6 +16,7 @@ class SolutionsController < ApplicationController
   # GET /solutions/new
   def new
     @solution = Solution.new
+    @mad_lib = MadLib.find(params[:mad_lib_id])
   end
 
   # GET /solutions/1/edit
@@ -23,6 +27,7 @@ class SolutionsController < ApplicationController
   def create
     words = []
     @solution = Solution.new({ :mad_lib_id => params[:mad_lib_id]})
+    @mad_lib = MadLib.find(params[:mad_lib_id])
     params[:solution].each do |k, v|
       @solution.fill_field(k, :with => v)
       words.push(v)
@@ -30,7 +35,7 @@ class SolutionsController < ApplicationController
     @solution.words = words.join('%')
     @solution.text = @solution.resolve
     if @solution.save
-      redirect_to @solution, notice: 'Your solution has been created'
+      redirect_to mad_lib_solutions_path(@mad_lib), notice: 'Your solution has been created'
     else
       render :new
     end
@@ -48,7 +53,8 @@ class SolutionsController < ApplicationController
   # DELETE /solutions/1
   def destroy
     @solution.destroy
-    redirect_to solutions_url, notice: 'Solution was successfully destroyed.'
+    @mad_lib = MadLib.find(params[:id])
+    redirect_to mad_lib_solutions_path(@mad_lib), notice: 'Solution was successfully destroyed.'
   end
 
   private
